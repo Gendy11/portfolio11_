@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmed El Gendy — Full-Stack Engineer</title>
+<meta name="description" content="Ahmed El Gendy, full-stack engineer building web apps with product thinking and an AI-first workflow, from API design through to production.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmed El Gendy — Full-Stack Engineer">
+<meta property="og:description" content="Full-stack engineer building web apps with product thinking and an AI-first workflow, from API design through to production.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#142033">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23142033'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%23F2F4F3'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --paper-2:#E8ECEC;
+    --ink:#142033;
+    --ink-2:#1C2A42;
+    --muted:#5A6577;
+    --rule:#CDD3DA;
+    --cobalt:#2445D6;
+    --cleared:#17804A;
+    --trace-text:#D9E0EA;
+    --trace-dim:#7C8AA3;
+    --sans:"Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:10;background:rgba(242,244,243,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  .nav.scrolled{border-bottom-color:var(--rule)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;white-space:nowrap;text-decoration:none;letter-spacing:-.01em}
+  .nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0}
+  .nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
+  .nav ul a:hover{color:var(--ink)}
+
+  /* Hero */
+  .hero{padding:72px 0 96px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .name{font-size:clamp(56px,8.4vw,112px);line-height:.92;letter-spacing:-.045em;font-weight:800;margin:0 0 28px}
+  .name .line{display:block;overflow:hidden;padding-bottom:.06em}
+  .name .line span{display:block}
+  .role{font-size:clamp(20px,2.1vw,25px);line-height:1.4;font-weight:500;max-width:30ch;margin:0 0 18px;letter-spacing:-.01em}
+  .where{color:var(--muted);margin:0 0 36px;max-width:44ch}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:6px;font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;border:1px solid var(--ink);transition:background .15s,color .15s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--cobalt);border-color:var(--cobalt)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn svg{width:18px;height:18px}
+
+  /* Trace */
+  .trace{background:var(--ink);color:var(--trace-text);border-radius:10px;font-family:var(--mono);font-size:13.5px;line-height:1.5;box-shadow:0 30px 60px -30px rgba(20,32,51,.55)}
+  .trace-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--trace-dim);font-size:12.5px}
+  .trace-head .dots{display:flex;gap:6px}
+  .trace-head .dots i{width:9px;height:9px;border-radius:50%;background:#2C3B55;display:block}
+  .layers-wrap{position:relative;padding:22px 20px 10px 20px}
+  .layers{list-style:none;margin:0;padding:0}
+  .spine{position:absolute;left:29px;top:36px;bottom:34px;width:2px;background:#26354F}
+  .spine-fill{position:absolute;inset:0;background:#4F6BF0;transform-origin:top center}
+  .pulse{position:absolute;left:-4px;top:0;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(79,107,240,.35);opacity:0}
+  .layer{position:relative;display:grid;grid-template-columns:20px 92px 1fr;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.07)}
+  .layer:last-child{border-bottom:0}
+  .node{width:12px;height:12px;border-radius:50%;background:var(--ink);border:2px solid #4F6BF0;justify-self:center;position:relative;z-index:1}
+  .lname{color:var(--trace-dim);font-size:13px}
+  .ltech{display:flex;flex-wrap:wrap;gap:6px}
+  .ltech b{font-weight:500;color:#fff;background:#1F2D47;border:1px solid #2C3B57;border-radius:4px;padding:3px 8px;font-size:12.5px;white-space:nowrap}
+  .trace-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-top:1px solid rgba(255,255,255,.08)}
+  .trace-foot p{margin:0;font-family:var(--sans);font-size:13.5px;color:var(--trace-dim);line-height:1.45}
+  .replay{background:none;border:1px solid #33435F;color:var(--trace-text);font:500 12.5px/1 var(--mono);padding:8px 12px;border-radius:5px;cursor:pointer;white-space:nowrap}
+  .replay:hover{border-color:var(--trace-text)}
+  .replay[hidden]{display:none}
+
+  /* Sections */
+  section{scroll-margin-top:72px}
+  .sec{padding:96px 0;border-top:1px solid var(--rule)}
+  .sec-grid{display:grid;grid-template-columns:260px 1fr;gap:48px}
+  .sec h2{font-size:30px;line-height:1.15;letter-spacing:-.025em;font-weight:700;margin:0}
+  .sec .lede{color:var(--muted);font-size:15.5px;margin:12px 0 0;max-width:26ch}
+  .sticky{position:sticky;top:96px;align-self:start}
+
+  /* Ledger */
+  .ledger{list-style:none;margin:0;padding:0}
+  .ledger li{display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px;padding:22px 0;border-bottom:1px solid var(--rule)}
+  .ledger li:first-child{padding-top:0}
+  .ledger .what{display:flex;align-items:baseline;gap:14px;min-width:0}
+  .ledger .desc{max-width:52ch}
+  .ledger .desc strong{display:block;font-weight:600;font-size:18px;line-height:1.35}
+  .ledger .desc span{color:var(--muted);font-size:15px}
+  .ledger .leader{flex:1;border-bottom:2px dotted #B7BFC9;transform-origin:left center;margin-bottom:6px;min-width:24px}
+  .ledger .amt{font-size:clamp(34px,4.4vw,52px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;text-align:right;min-width:3.2ch}
+  .ledger .amt.pos{color:var(--cleared)}
+  .ledger .amt.blue{color:var(--cobalt)}
+
+  /* Experience */
+  .jobs{display:flex;flex-direction:column}
+  .job{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:30px 0;border-bottom:1px solid var(--rule)}
+  .job:first-child{padding-top:0}
+  .job:last-child{border-bottom:0}
+  .when{color:var(--muted);font-size:14.5px;font-variant-numeric:tabular-nums;line-height:1.5;padding-top:4px}
+  .when .now{display:inline-block;margin-top:6px;color:var(--cleared);font-weight:600;font-size:13.5px}
+  .job h3{margin:0;font-size:21px;letter-spacing:-.015em;line-height:1.3}
+  .job .co{margin:2px 0 14px;color:var(--muted);font-size:15.5px}
+  .job .co b{color:var(--ink);font-weight:600}
+  .job ul{margin:0;padding:0;list-style:none}
+  .job li{position:relative;padding-left:20px;margin:0 0 10px;max-width:68ch}
+  .job li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--cobalt)}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .stack span{font-size:13px;padding:3px 9px;border-radius:4px;background:var(--paper-2);color:var(--ink-2);font-weight:500}
+
+  /* Projects */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .proj{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:28px;display:flex;flex-direction:column}
+  .proj .kind{color:var(--muted);font-size:14px;margin:0 0 6px}
+  .proj h3{margin:0 0 12px;font-size:24px;letter-spacing:-.02em;line-height:1.2}
+  .proj p{margin:0 0 16px;max-width:52ch}
+  .proj .foot{margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .proj a.link{font-weight:600;color:var(--cobalt);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+  .proj a.link:hover{text-decoration:underline;text-underline-offset:3px}
+  .proj a.link svg{width:18px;height:18px}
+  .proj .figure{font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--cobalt)}
+  .proj .figure small{display:block;font-size:13.5px;letter-spacing:0;color:var(--muted);font-weight:500;margin-top:6px}
+
+  /* Skills */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+  .skill{padding:18px 0;border-bottom:1px solid var(--rule)}
+  .skill h3{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--muted)}
+  .skill p{margin:0;font-size:16.5px}
+  .edu{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .edu div{padding:22px 24px;background:var(--paper-2);border-radius:8px}
+  .edu h3{margin:0 0 4px;font-size:17px}
+  .edu p{margin:0;color:var(--muted);font-size:15px}
+
+  /* Contact */
+  .contact{background:var(--ink);color:var(--paper);padding:110px 0 56px;border-top:0}
+  .contact h2{font-size:clamp(40px,6vw,76px);letter-spacing:-.04em;line-height:1;margin:0 0 22px;font-weight:800;max-width:14ch}
+  .contact .sub{color:#A9B4C6;max-width:46ch;margin:0 0 40px;font-size:18px}
+  .email-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:64px}
+  .email{font-size:clamp(20px,2.6vw,30px);font-weight:600;letter-spacing:-.015em;color:#fff;text-decoration:none;border-bottom:2px solid var(--cobalt);padding-bottom:2px;word-break:break-all}
+  .email:hover{border-bottom-color:#fff}
+  .copy{background:transparent;border:1px solid #3A4B68;color:var(--paper);font:600 14px/1 var(--sans);height:40px;padding:0 16px;border-radius:6px;cursor:pointer}
+  .copy:hover{border-color:var(--paper)}
+  .links{display:flex;gap:28px;flex-wrap:wrap;padding-top:28px;border-top:1px solid #2A3A55;justify-content:space-between;align-items:center}
+  .links nav{display:flex;gap:24px;flex-wrap:wrap}
+  .links a{color:var(--paper);text-decoration:none;font-weight:500;display:inline-flex;gap:8px;align-items:center}
+  .links a:hover{color:#9DB1FF}
+  .links a svg{width:18px;height:18px}
+  .links small{color:#7C8AA3;font-size:14px}
+
+  /* Responsive */
+  @media (max-width: 960px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .sec-grid{grid-template-columns:1fr;gap:32px}
+    .sticky{position:static}
+    .sec .lede{max-width:52ch}
+  }
+  @media (max-width: 680px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .nav ul{gap:18px}
+    .nav ul li.hide-sm{display:none}
+    .hero{padding:44px 0 72px}
+    .sec{padding:72px 0}
+    .job{grid-template-columns:1fr;gap:6px}
+    .projects,.skills,.edu{grid-template-columns:1fr}
+    .ledger li{grid-template-columns:1fr;gap:8px}
+    .ledger .leader{display:none}
+    .ledger .amt{text-align:left}
+    .layer{grid-template-columns:20px 74px 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Ahmed El Gendy</a>
+    <ul>
+      <li class="hide-sm"><a href="#results">Results</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="hide-sm"><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="name" aria-label="Ahmed El Gendy">
+          <span class="line"><span>Ahmed</span></span>
+          <span class="line"><span>El Gendy</span></span>
+        </h1>
+        <p class="role" data-intro>Full-stack engineer building web apps with product thinking and an AI-first workflow.</p>
+        <p class="where" data-intro>I design reliable backends, build clean, responsive frontends and bring in AI where it adds real value, owning the work from API design through to production.</p>
+        <div class="actions" data-intro>
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ahmed-el-gendy" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Gendy11" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.6-2.67-.31-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <figure class="trace" aria-label="The stack I work across, from frontend to delivery" style="margin:0">
+        <div class="trace-head">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Every layer, end to end</span>
+        </div>
+        <div class="layers-wrap">
+          <span class="spine" aria-hidden="true"><span class="spine-fill"></span><span class="pulse"></span></span>
+          <ol class="layers">
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">Frontend</span><span class="ltech"><b>Angular</b><b>React</b></span></li>
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">API</span><span class="ltech"><b>ASP.NET Web API</b><b>Node.js</b><b>C#</b><b>EF Core</b></span></li>
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">Auth</span><span class="ltech"><b>JWT</b><b>OAuth2</b></span></li>
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">Cache</span><span class="ltech"><b>Redis</b></span></li>
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">Database</span><span class="ltech"><b>PostgreSQL</b><b>SQL Server</b></span></li>
+          <li class="layer" data-layer><span class="node" aria-hidden="true"></span><span class="lname">Delivery</span><span class="ltech"><b>Docker</b><b>CI/CD</b><b>Azure</b><b>AWS</b></span></li>
+          </ol>
+        </div>
+        <figcaption class="trace-foot">
+          <p>From the browser to the database, I build and ship every layer.</p>
+          <button class="replay" id="replay" type="button" hidden>Replay</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec" id="results">
+    <div class="wrap sec-grid">
+      <div class="sticky">
+        <h2>Results</h2>
+        <p class="lede">Measured outcomes from production work and research.</p>
+      </div>
+      <ul class="ledger">
+        <li>
+          <div class="what"><div class="desc"><strong>Less manual pricing work for finance, commercial and sales teams</strong><span>Full-stack pricing tool, VOIS</span></div><span class="leader" aria-hidden="true"></span></div>
+          <div class="amt blue" data-count="60" data-prefix="−" data-suffix="%">−60%</div>
+        </li>
+        <li>
+          <div class="what"><div class="desc"><strong>Errors in loan installment processing across thousands of daily transactions</strong><span>Loan installment APIs, Fawry</span></div><span class="leader" aria-hidden="true"></span></div>
+          <div class="amt pos" data-count="0" data-suffix="">0</div>
+        </li>
+        <li>
+          <div class="what"><div class="desc"><strong>Lower API response times after Redis caching and query tuning</strong><span>Backend APIs, VOIS</span></div><span class="leader" aria-hidden="true"></span></div>
+          <div class="amt blue" data-count="20" data-prefix="−" data-suffix="%">−20%</div>
+        </li>
+        <li>
+          <div class="what"><div class="desc"><strong>Critical user flows redesigned to cut drop-off</strong><span>Core user journey in Angular, Klickit</span></div><span class="leader" aria-hidden="true"></span></div>
+          <div class="amt" data-count="5" data-suffix="">5</div>
+        </li>
+        <li>
+          <div class="what"><div class="desc"><strong>Accuracy detecting SQL injection in live network traffic</strong><span>CNN intrusion detection, B.Sc. thesis</span></div><span class="leader" aria-hidden="true"></span></div>
+          <div class="amt" data-count="96" data-suffix="%">96%</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="experience">
+    <div class="wrap sec-grid">
+      <div class="sticky">
+        <h2>Experience</h2>
+        <p class="lede">Four roles across .NET backends and Angular frontends.</p>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div class="when">Aug 2025 – now<br><span class="now">Current role</span></div>
+          <div>
+            <h3>Software Engineer</h3>
+            <p class="co"><b>Vodafone Intelligent Solutions (VOIS)</b>, Cairo</p>
+            <ul>
+              <li>Designed and shipped a full-stack pricing tool that encodes complex financial rules across multiple products, cutting manual pricing work by 60% for finance, commercial and sales teams.</li>
+              <li>Introduced Redis caching and query optimisation across backend APIs, improving response times by 20%, and contributed to architecture and technical design decisions.</li>
+              <li>Owned features end to end across 3 cross-functional teams on two-week releases, from requirements and backend implementation to stakeholder sign-off.</li>
+              <li>Used Claude, Cursor and Copilot to speed up scaffolding and to reconcile tool output against the source Excel pricing models.</li>
+            </ul>
+            <div class="stack"><span>.NET</span><span>C#</span><span>Angular</span><span>Redis</span><span>SQL</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Feb 2025 – Jul 2025</div>
+          <div>
+            <h3>Associate Software Engineer</h3>
+            <p class="co"><b>Fawry Integrated Systems</b>, Cairo</p>
+            <ul>
+              <li>Built loan installment business logic on a high-traffic payments platform serving millions of users, with zero processing errors across thousands of daily transactions.</li>
+              <li>Implemented RESTful APIs with JWT-based authentication and authorization, giving the mobile team a consistent, reliable integration.</li>
+              <li>Applied security and data-protection practices across every API endpoint to keep the system sound under high load.</li>
+            </ul>
+            <div class="stack"><span>.NET</span><span>C#</span><span>REST</span><span>JWT</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Jan 2023 – Dec 2023</div>
+          <div>
+            <h3>Software Engineer, part-time</h3>
+            <p class="co"><b>Klickit</b>, Cairo</p>
+            <ul>
+              <li>Redesigned the core user journey in Angular with a component-based architecture, reducing drop-off across 5 critical flows.</li>
+              <li>Built and integrated .NET REST APIs for new product features and contributed Flutter UI components.</li>
+              <li>Supported containerised deployment of backend services with Docker for consistent staging environments.</li>
+            </ul>
+            <div class="stack"><span>.NET</span><span>Angular</span><span>Flutter</span><span>Docker</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Jul 2022 – Oct 2022</div>
+          <div>
+            <h3>Software Engineer Intern</h3>
+            <p class="co"><b>Klickit</b>, Cairo</p>
+            <ul>
+              <li>Built an e-commerce platform from scratch in four months: .NET backend, Angular frontend, authentication, role-based access control, cart and order processing on PostgreSQL.</li>
+            </ul>
+            <div class="stack"><span>.NET</span><span>Angular</span><span>PostgreSQL</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects">
+    <div class="wrap sec-grid">
+      <div class="sticky">
+        <h2>Projects</h2>
+        <p class="lede">Built outside work to go deeper on the full stack.</p>
+      </div>
+      <div class="projects">
+        <article class="proj">
+          <p class="kind">Side project</p>
+          <h3>Breeze</h3>
+          <p>A full-stack perfume store built end to end, with JWT auth, role-based authorization, Redis caching, Stripe payments and Docker-based deployment.</p>
+          <div class="stack" style="margin:0 0 20px"><span>.NET Core</span><span>Angular</span><span>PostgreSQL</span><span>Redis</span><span>Stripe</span><span>Docker</span></div>
+          <div class="foot">
+            <a class="link" href="https://github.com/Gendy11/Breeze" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.6-2.67-.31-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+              View code on GitHub
+            </a>
+          </div>
+        </article>
+        <article class="proj">
+          <p class="kind">B.Sc. thesis, German University in Cairo</p>
+          <h3>Intrusion detection with CNNs</h3>
+          <p>A convolutional neural network that identifies SQL injection attacks in live network traffic.</p>
+          <div class="foot">
+            <div class="figure">96%<small>detection accuracy</small></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="skills">
+    <div class="wrap sec-grid">
+      <div class="sticky">
+        <h2>Skills</h2>
+        <p class="lede">The tools I use day to day.</p>
+      </div>
+      <div>
+        <div class="skills">
+          <div class="skill"><h3>Backend</h3><p>C#, .NET Web API, Node.js, EF Core, LINQ, REST, JWT, OAuth2</p></div>
+          <div class="skill"><h3>Data</h3><p>PostgreSQL, SQL Server, Redis</p></div>
+          <div class="skill"><h3>Infrastructure</h3><p>Docker, CI/CD, Git, Azure, AWS</p></div>
+          <div class="skill"><h3>Architecture</h3><p>System design, microservices, Clean Architecture, SOLID</p></div>
+          <div class="skill"><h3>Frontend</h3><p>Angular, React, Flutter, JavaScript</p></div>
+          <div class="skill"><h3>Languages</h3><p>Arabic (native), English (fluent), German and French (basic)</p></div>
+        </div>
+        <div class="edu">
+          <div><h3>B.Sc. Computer Engineering</h3><p>German University in Cairo, 2019 – 2024. Grade: Very Good (B+).</p></div>
+          <div><h3>Ways of working</h3><p>Agile and Scrum, code review, AI-assisted development with Claude and Cursor.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact">
+    <div class="wrap">
+      <h2>Let's build something reliable.</h2>
+      <p class="sub">I'm interested in full-stack engineering roles. The fastest way to reach me is email.</p>
+      <div class="email-row">
+        <a class="email" href="mailto:ahmedelgendy1170@gmail.com">ahmedelgendy1170@gmail.com</a>
+        <button class="copy" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="links">
+        <nav aria-label="Profiles">
+          <a href="https://www.linkedin.com/in/ahmed-el-gendy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.730v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+          <a href="https://github.com/Gendy11" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.840 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.6-2.67-.31-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>GitHub</a>
+        </nav>
+        <small>© <span id="yr">2026</span> Ahmed Amr El Gendy, Cairo</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  try{ document.getElementById('yr').textContent = new Date().getFullYear(); }catch(e){}
+
+  // Nav border on scroll
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Copy email
+  var copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', function(){
+    var done = function(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy email'; }, 1800); };
+    try{
+      navigator.clipboard.writeText('ahmedelgendy1170@gmail.com').then(done).catch(function(){ copyBtn.textContent = 'Select the address to copy'; });
+    }catch(e){ copyBtn.textContent = 'Select the address to copy'; }
+  });
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!window.gsap || reduce) return; // static page is complete without motion
+
+  gsap.registerPlugin(window.ScrollTrigger);
+
+  // Hero: one orchestrated load sequence
+  var layers = gsap.utils.toArray('[data-layer]');
+  var replay = document.getElementById('replay');
+  var spineFill = document.querySelector('.spine-fill'), pulse = document.querySelector('.pulse'), spine = document.querySelector('.spine');
+
+  function stackTimeline(){
+    var tl = gsap.timeline();
+    var h = spine.offsetHeight - 10;
+    tl.set(layers, {autoAlpha:0, x:-10})
+      .set(layers.map(function(l){ return l.querySelector('.node'); }), {scale:0})
+      .set(spineFill, {scaleY:0})
+      .set(pulse, {y:0, autoAlpha:0});
+    tl.to(spineFill, {scaleY:1, duration:layers.length*.22, ease:'none'}, 0);
+    layers.forEach(function(l, i){
+      tl.to(l, {autoAlpha:1, x:0, duration:.35, ease:'power2.out'}, i*.22)
+        .to(l.querySelector('.node'), {scale:1, duration:.3, ease:'back.out(3)'}, i*.22);
+    });
+    // a request travels down the stack and the response comes back up
+    tl.to(pulse, {autoAlpha:1, duration:.15})
+      .to(pulse, {y:h, duration:1.1, ease:'power1.inOut'})
+      .to(pulse, {y:0, duration:1.1, ease:'power1.inOut'})
+      .to(pulse, {autoAlpha:0, duration:.2});
+    return tl;
+  }
+
+  var intro = gsap.timeline({defaults:{ease:'power3.out'}});
+  intro.from('.name .line span', {yPercent:110, duration:.9, stagger:.08})
+       .from('[data-intro]', {y:14, autoAlpha:0, duration:.6, stagger:.08}, '-=.45')
+       .from('.trace', {y:20, autoAlpha:0, duration:.7}, '-=.55')
+       .add(stackTimeline(), '-=.2')
+       .add(function(){ replay.hidden = false; });
+
+  replay.addEventListener('click', function(){ replay.hidden = true; stackTimeline().add(function(){ replay.hidden = false; }); });
+
+  // Results ledger: leaders draw and figures settle, once
+  gsap.utils.toArray('.ledger li').forEach(function(li){
+    var amt = li.querySelector('.amt'), leader = li.querySelector('.leader');
+    var end = +amt.dataset.count, pre = amt.dataset.prefix || '', suf = amt.dataset.suffix || '';
+    var o = {v:0};
+    var tl = gsap.timeline({scrollTrigger:{trigger:li, start:'top 85%', once:true}});
+    if (leader) tl.from(leader, {scaleX:0, duration:.7, ease:'power2.out'});
+    tl.from(amt, {autoAlpha:0, duration:.3}, '<.15');
+    if (end > 0) tl.to(o, {v:end, duration:.9, ease:'power2.out', onUpdate:function(){ amt.textContent = pre + Math.round(o.v) + suf; }}, '<');
+  });
+})();
+</script>
+</body>
+</html>
